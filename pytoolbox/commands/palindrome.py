@@ -11,8 +11,14 @@ def _reverse(text: str) -> str:
     return text[::-1]
 
 
+def _normalize(text: str) -> str:
+    """Normalize text for palindrome check: lowercase + alphanumeric only."""
+    return ''.join(c.lower() for c in text if c.isalnum())
+
+
 def _check(text: str) -> bool:
-    return text == _reverse(text)
+    normalized = _normalize(text)
+    return normalized == _reverse(normalized)
 
 
 def _format_result(text: str, is_palindrome: bool) -> str:
