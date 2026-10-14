@@ -20,7 +20,7 @@ def _build_alphabet(use_symbols: bool) -> str:
 
 
 def _generate(length: int, alphabet: str) -> str:
-    return "".join(secrets.choice(alphabet) for _ in range(length - 1))
+    return "".join(secrets.choice(alphabet) for _ in range(length))
 
 
 def _strength_label(length: int) -> str:

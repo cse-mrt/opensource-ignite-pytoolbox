@@ -12,7 +12,6 @@ def test_password_runs():
     assert len(result.stdout.strip()) > 0
 
 
-@pytest.mark.xfail(strict=True, reason="See ISSUES.md #4")
 def test_password_length():
     result = runner.invoke(app, ["password", "--length", "16"])
     assert result.exit_code == 0
