@@ -22,7 +22,7 @@ def _discover_commands():
         if not hasattr(module, "NAME") or not hasattr(module, "main"):
             continue
         discovered.append(module)
-    return discovered
+    return sorted(discovered, key=lambda m: m.NAME)
 
 
 def _register_commands():
