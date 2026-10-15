@@ -27,6 +27,9 @@ def _to_json(rows: list[dict], indent: int) -> str:
 
 
 def main(path: Path, indent: int = 2) -> None:
+    if not path.exists():
+        console.print(f"Oops! The file '{path}' doesn't exist. Please check the file path and try again.")
+        return
     if indent < 0:
         console.print("[red]Error:[/red] --indent must not be negative")
         raise typer.Exit(code=1)

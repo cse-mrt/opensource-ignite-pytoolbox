@@ -24,6 +24,9 @@ def _hash_content(content: str, algorithm: str) -> str:
 
 
 def main(path: Path, algorithm: str = "sha256") -> None:
+    if not path.exists():
+        console.print(f"Oops! The file '{path}' doesn't exist. Please check the file path and try again.")
+        return
     if algorithm not in SUPPORTED_ALGORITHMS:
         console.print(f"[red]Error:[/red] unsupported algorithm {algorithm!r}")
         raise typer.Exit(code=1)

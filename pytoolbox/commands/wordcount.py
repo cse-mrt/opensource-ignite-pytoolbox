@@ -23,6 +23,10 @@ def _average_word_length(words: list[str]) -> float:
 
 
 def main(path: Path) -> None:
+    if not path.exists():
+            console.print(f"Oops! The file '{path}' doesn't exist. Please check the file path and try again.")
+            return
+
     text = path.read_text()
 
     words = _split_words(text)
