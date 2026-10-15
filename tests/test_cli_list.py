@@ -17,7 +17,6 @@ def test_list_runs_and_shows_commands():
     assert "coinflip" in result.stdout
 
 
-@pytest.mark.xfail(strict=True, reason="See ISSUES.md #11")
 def test_list_is_alphabetically_sorted(monkeypatch):
     real_iter_modules = pkgutil.iter_modules
 
