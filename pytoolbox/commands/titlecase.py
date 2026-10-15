@@ -1,5 +1,6 @@
 import typer
 from rich.console import Console
+import re
 
 NAME = "titlecase"
 HELP = "Convert a string to title case."
@@ -8,7 +9,7 @@ console = Console()
 
 
 def _to_title_case(text: str) -> str:
-    return text.title()
+    return re.sub(r"[A-Za-z]+('[A-Za-z]+)?", lambda mo: mo.group(0)[0].upper() + mo.group(0)[1:].lower(), text)
 
 
 def _word_count(text: str) -> int:
