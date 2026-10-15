@@ -10,7 +10,7 @@ MIN_SUPPORTED_YEAR = 1
 
 
 def _is_leap(year: int) -> bool:
-    return year % 4 == 0
+    return (year % 4 == 0 and year % 100 != 0) or (year % 100 == 0 and year % 400 == 0)
 
 
 def _days_in_year(is_leap: bool) -> int:
