@@ -16,6 +16,7 @@ def test_palindrome_simple_false():
     assert result.exit_code == 0
     assert "False" in result.stdout
 
+
 def test_palindrome_ignores_case_and_spaces():
     result = runner.invoke(app, ["palindrome", "Race car"])
     assert result.exit_code == 0
