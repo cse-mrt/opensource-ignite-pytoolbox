@@ -9,7 +9,7 @@ console = Console()
 
 
 def _split_words(text: str) -> list[str]:
-    return text.split(" ")
+    return text.split()
 
 
 def _count_lines(text: str) -> int:
