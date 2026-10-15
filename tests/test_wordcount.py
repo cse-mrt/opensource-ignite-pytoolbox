@@ -1,4 +1,3 @@
-import pytest
 from typer.testing import CliRunner
 
 from pytoolbox.cli import app
