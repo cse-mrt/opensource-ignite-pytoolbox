@@ -7,7 +7,7 @@ HELP = "converts between common units"
 console = Console()
 
 units={"km":0,"mi":0,"m":0,"c":1,"f":1,"g":2,"kg":2,"lb":2}
-    
+
 def _is_available(unit_1,unit_2)-> bool:
     units_=["km","mi","m","c","f","g","kg","lb"]
     return (unit_1 in units_) and (unit_2 in units_)
@@ -58,7 +58,7 @@ def _convert(value,unit_1,unit_2)->bool:
     
 
 def main(value:float,unit_1:str,unit_2:str)->None:
-    if value<=0:
+    if value<=0 and not (unit_1=="c" or unit_1=="f"):
         console.print(f"[red]Error:[/red] value must be greater than [red]0[/red]")
         raise typer.Exit(code=1)
     
@@ -75,6 +75,9 @@ def main(value:float,unit_1:str,unit_2:str)->None:
     if frac_==0:
         converted_value=int_
     else:
-        converted_value=round(converted_value)
+        converted_value=round(converted_value,2)
+    
+    if units[unit_2]==1:unit_2=unit_2.upper()
+    
     console.print(f"[yellow]{converted_value}[/yellow][bold]{unit_2}[/bold]")
     
