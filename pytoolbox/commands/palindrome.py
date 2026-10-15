@@ -12,7 +12,12 @@ def _reverse(text: str) -> str:
 
 
 def _check(text: str) -> bool:
-    return text == _reverse(text)
+    text = text.lower()
+    newtext = ""
+    for char in text:
+        if char in "abcdefghijklmnopqrstuvwxyz":
+            newtext += char
+    return newtext == _reverse(newtext)
 
 
 def _format_result(text: str, is_palindrome: bool) -> str:
