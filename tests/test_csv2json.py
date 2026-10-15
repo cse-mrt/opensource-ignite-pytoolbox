@@ -17,7 +17,6 @@ def test_csv2json_runs(tmp_path):
     assert isinstance(data, list)
 
 
-@pytest.mark.xfail(strict=True, reason="See ISSUES.md #10")
 def test_csv2json_keeps_first_row(tmp_path):
     path = tmp_path / "data.csv"
     path.write_text("name,age\nalice,30\nbob,25\n")

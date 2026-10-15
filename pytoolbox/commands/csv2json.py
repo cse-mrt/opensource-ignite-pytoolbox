@@ -15,7 +15,7 @@ def _read_rows(path: Path) -> tuple[list[str], list[dict]]:
     with open(path, newline="") as f:
         reader = csv.reader(f)
         headers = next(reader)
-        next(reader)
+        
 
         rows = [dict(zip(headers, row, strict=False)) for row in reader]
 
