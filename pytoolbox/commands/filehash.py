@@ -13,8 +13,12 @@ SUPPORTED_ALGORITHMS = ("sha256", "md5", "sha1")
 
 
 def _read_content(path: Path) -> str:
-    with open(path) as f:
-        return f.read()
+    try:
+        with open(path) as f:
+            return f.read()
+    except FileNotFoundError:
+        console.print(f"Error: file not found: {path}")
+        raise typer.Exit(code=1) from None
 
 
 def _hash_content(content: str, algorithm: str) -> str:

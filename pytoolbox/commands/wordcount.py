@@ -1,5 +1,6 @@
 from pathlib import Path
 
+import typer
 from rich.console import Console
 
 NAME = "wordcount"
@@ -23,7 +24,11 @@ def _average_word_length(words: list[str]) -> float:
 
 
 def main(path: Path) -> None:
-    text = path.read_text()
+    try:
+        text = path.read_text()
+    except FileNotFoundError:
+        console.print(f"Error: file not found: {path}")
+        raise typer.Exit(code=1) from None
 
     words = _split_words(text)
     line_count = _count_lines(text)

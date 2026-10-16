@@ -26,3 +26,9 @@ def test_filehash_binary_file(tmp_path):
     result = runner.invoke(app, ["filehash", str(path)])
     assert result.exit_code == 0
     assert expected in result.stdout
+
+
+def test_filehash_missing_file():
+    result = runner.invoke(app, ["filehash", "does-not-exist.txt"])
+    assert result.exit_code != 0
+    assert "Error: file not found: does-not-exist.txt" in result.stdout

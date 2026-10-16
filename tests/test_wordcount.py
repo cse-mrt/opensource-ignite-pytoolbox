@@ -21,3 +21,12 @@ def test_wordcount_multiple_spaces(tmp_path):
     result = runner.invoke(app, ["wordcount", str(path)])
     assert result.exit_code == 0
     assert "Words: 2" in result.stdout
+
+
+def test_wordcount_missing_file():
+    result = runner.invoke(app, ["wordcount", "does-not-exist.txt"])
+    assert result.exit_code != 0
+    assert "Error: file not found: does-not-exist.txt" in result.stdout
+
+
+

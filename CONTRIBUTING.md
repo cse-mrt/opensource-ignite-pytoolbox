@@ -148,8 +148,7 @@ this:
 
 ```python
 @pytest.mark.xfail(strict=True, reason="See ISSUES.md #7")
-def test_leapyear_century_not_divisible_by_400():
-    ...
+def test_leapyear_century_not_divisible_by_400(): ...
 ```
 
 `xfail` means "we expect this test to fail right now, because of a known
