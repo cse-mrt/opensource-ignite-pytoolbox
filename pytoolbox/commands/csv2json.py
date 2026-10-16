@@ -12,13 +12,15 @@ console = Console()
 
 
 def _read_rows(path: Path) -> tuple[list[str], list[dict]]:
-    with open(path, newline="") as f:
-        reader = csv.reader(f)
-        headers = next(reader)
-        next(reader)
+    try:
+        with open(path, newline="") as f:
+            reader = csv.reader(f)
+            headers = next(reader)
+            next(reader)
 
-        rows = [dict(zip(headers, row, strict=False)) for row in reader]
-
+            rows = [dict(zip(headers, row, strict=False)) for row in reader]
+    except FileNotFoundError:
+        typer.echo(f"Error: file not found: {path}")
     return headers, rows
 
 
