@@ -1,16 +1,38 @@
 import importlib
 import pkgutil
+from typing import Optional
 
 import typer
 from rich.console import Console
 from rich.table import Table
 
-from pytoolbox import commands
+from pytoolbox import __version__, commands
 
-app = typer.Typer(help="pytoolbox: a plugin-based command-line toolbox.")
+app = typer.Typer(help="pytoolbox CLI")
 console = Console()
 
 _loaded_commands = []
+
+
+def _version_callback(value: bool) -> None:
+    if value:
+        console.print(f"pytoolbox {__version__}")
+        raise typer.Exit()
+
+
+@app.callback()
+def main(
+    version: Optional[bool] = typer.Option(
+        None,
+        "--version",
+        "-v",
+        help="Show the installed version and exit.",
+        callback=_version_callback,
+        is_eager=True,
+    )
+) -> None:
+    """pytoolbox command line interface."""
+    pass
 
 
 def _discover_commands():
